@@ -1,0 +1,172 @@
+<h2 class="subtitle">Entrance Registration</h2>
+
+<form>
+  <input type="hidden" name="guest"/>
+  <input type="hidden" name="vehicle"/>
+
+  <div class="field">
+    <label class="label" for="optParkingLot">Parking lot: </label>
+    <div class="control">
+      <div class="select">
+        <select class="select" id="optParkingLot" name="parking_log">
+          <% @parking_lots.each do |lot| %>
+            <option value="<%= lot.id %>"><%= lot.name %></option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: Search or register guest -->
+  <label class="label" for="txtGuest">Guest: </label>
+  <div class="field has-addons">
+    <p class="control">
+      <input class="input" type="text" size="50" readonly="readonly" id="txtGuest"/>
+    </p>
+    <p class="control">
+      <a class="button is-info" id="btnSearchGuest">Search</a>
+    </p>
+  </div>
+
+  <!-- TODO: Search or register vehicle -->
+  <label class="label" for="txtVehicle">Vehicle: </label>
+  <div class="field has-addons">
+    <p class="control">
+      <input class="input" type="text" size="50" readonly="readonly" id="txtVehicle"/>
+    </p>
+    <p class="control">
+      <a class="button is-info" id="btnSearchVehicle">Search</a>
+    </p>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="label" for="chkDisability">
+        <input class="checkbox" type="checkbox" id="chkDisability" name="is_disabled" value="true"/>
+        Disability?
+      </label>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-primary" type="submit">Register</button>
+    </div>
+    <div class="control">
+      <a href="/" class="button">Cancel</a>
+    </div>
+  </div>
+</form>
+
+<div class="modal" id="dlgSearchGuest">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Search Guest</p>
+      <button class="delete" aria-label="close" id="btnCloseSearchGuest"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form id="frmSearchGuest" action="javascript:void(0)" onsubmit="return false;">
+        <div class="field">
+          <label class="label" for="txtSearchGuestName">Name: </label>
+          <div class="control">
+            <input class="input" type="text" size="50" maxlength="50" id="txtSearchGuestName" name="name" required/>
+          </div>
+        </div>
+        <button class="button is-primary" type="submit" id="btnSearchGuestGo">Search</button>
+      </form>
+
+      <table class="table is-invisible" id="tblSearchGuest">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Document</th>
+        </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody id="tbodySearchGuest">
+        </tbody>
+      </table>
+
+    </section>
+  </div>
+</div>
+
+<div class="modal" id="dlgSearchVehicle">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <h2 class="subtitle">Search Vehicle</h2>
+    content here
+  </div>
+  <button class="modal-close is-large" aria-label="close" id="btnCloseSearchVehicle"></button>
+</div>
+
+<script type="text/javascript">
+  var entrance = {
+      init: function() {
+          document.getElementById("btnSearchGuest").addEventListener("click", entrance.searchGuest);
+          document.getElementById("frmSearchGuest").addEventListener("submit", entrance.doSearchGuest);
+          document.getElementById("btnCloseSearchGuest").addEventListener("click", entrance.closeSearchGuest);
+          document.getElementById("btnSearchVehicle").addEventListener("click", entrance.searchVehicle);
+          document.getElementById("btnCloseSearchVehicle").addEventListener("click", entrance.closeSearchVehicle);
+      },
+      searchGuest: function() {
+          document.getElementById("dlgSearchGuest").classList.add("is-active");
+      },
+      closeSearchGuest: function() {
+          document.getElementById("dlgSearchGuest").classList.remove("is-active");
+      },
+      doSearchGuest: function() {
+          var xhr = new XMLHttpRequest();
+          xhr.onload = function () {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                  var guests = JSON.parse(xhr.responseText);
+                  var tbody = document.getElementById("tbodySearchGuest");
+                  tbody.innerHTML = "";
+                  var n = guests.length;
+                  var guest, tr, td, a;
+                  for (var i = 0; i < n; i++) {
+                      guest = guests[i];
+                      tr = document.createElement("tr");
+                      tbody.appendChild(tr);
+                      td = document.createElement("td");
+                      a = document.createElement("a");
+                      a.href = "javascript:void(0)";
+                      a.onclick = function() {
+                        entrance.confirmSearchGuest(guest.id, guest.name);
+                      };
+                      a.innerText = guest.name;
+                      td.appendChild(a);
+                      tr.appendChild(td);
+                      td = document.createElement("td");
+                      a = document.createElement("a");
+                      a.href = "javascript:void(0)";
+                      a.onclick = function() {
+                          entrance.confirmSearchGuest(guest.id, guest.name);
+                      };
+                      a.innerText = guest.document;
+                      td.appendChild(a);
+                      tr.appendChild(td);
+                  }
+                  document.getElementById("tblSearchGuest").classList.remove("is-invisible")
+              } else {
+                  alert('A error occurred during the processing of this request.');
+              }
+          };
+          xhr.open('GET', '/guests.json?name=' + encodeURIComponent(document.getElementById("txtSearchGuestName").value));
+          xhr.send();
+      },
+      confirmSearchGuest: function(id, name) {
+          alert(id + ":" + name);
+      },
+      searchVehicle: function() {
+          document.getElementById("dlgSearchVehicle").classList.add("is-active");
+      },
+      closeSearchVehicle: function() {
+          document.getElementById("dlgSearchVehicle").classList.remove("is-active");
+      }
+  };
+  entrance.init();
+</script>

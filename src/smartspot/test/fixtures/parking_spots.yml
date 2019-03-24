@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyText
+  parking_spot_size_id: 
+  parking_spot_status_id: 
+  is_private: false
+  is_for_disability: false
+
+two:
+  code: MyText
+  parking_spot_size_id: 
+  parking_spot_status_id: 
+  is_private: false
+  is_for_disability: false

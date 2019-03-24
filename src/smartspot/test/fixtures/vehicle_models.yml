@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_brand_id: 
+  name: MyText
+  parking_spot_size_id: 
+
+two:
+  vehicle_brand_id: 
+  name: MyText
+  parking_spot_size_id: 

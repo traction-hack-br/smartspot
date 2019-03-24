@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @parking_spot.code %>
+</p>
+
+<p>
+  <strong>Parking spot size:</strong>
+  <%= @parking_spot.parking_spot_size %>
+</p>
+
+<p>
+  <strong>Parking spot status:</strong>
+  <%= @parking_spot.parking_spot_status %>
+</p>
+
+<p>
+  <strong>Is private:</strong>
+  <%= @parking_spot.is_private %>
+</p>
+
+<p>
+  <strong>Is for disability:</strong>
+  <%= @parking_spot.is_for_disability %>
+</p>
+
+<%= link_to 'Edit', edit_parking_spot_path(@parking_spot) %> |
+<%= link_to 'Back', parking_spots_path %>

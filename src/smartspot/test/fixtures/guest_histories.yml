@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guest_id: 
+  vehicle_id: 
+  parking_spot_id: 
+  entrance_date: 2019-03-24 14:38:43
+  exit_date: 2019-03-24 14:38:43
+
+two:
+  guest_id: 
+  vehicle_id: 
+  parking_spot_id: 
+  entrance_date: 2019-03-24 14:38:43
+  exit_date: 2019-03-24 14:38:43

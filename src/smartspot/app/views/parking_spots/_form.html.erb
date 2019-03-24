@@ -1,0 +1,41 @@
+<%= form_for(@parking_spot) do |f| %>
+  <% if @parking_spot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parking_spot.errors.count, "error") %> prohibited this parking_spot from being saved:</h2>
+
+      <ul>
+      <% @parking_spot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_area :code %>
+  </div>
+  <div class="field">
+    <%= f.label :parking_lot_id %><br>
+    <%= f.text_field :parking_lot_id %>
+  </div>
+  <div class="field">
+    <%= f.label :parking_spot_size_id %><br>
+    <%= f.text_field :parking_spot_size_id %>
+  </div>
+  <div class="field">
+    <%= f.label :parking_spot_status_id %><br>
+    <%= f.text_field :parking_spot_status_id %>
+  </div>
+  <div class="field">
+    <%= f.label :is_private %><br>
+    <%= f.check_box :is_private %>
+  </div>
+  <div class="field">
+    <%= f.label :is_for_disability %><br>
+    <%= f.check_box :is_for_disability %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
