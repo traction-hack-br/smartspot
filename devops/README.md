@@ -14,3 +14,4 @@ Tools envolved:
 - AWS EC2 (to provide machines for the Kubernetes cluster - 1 Master + 2 Nodes)
 - Kops (to setup the AWS EC2 provision script and generate Terraform IaC scripts)
 - Terraform (to automate provisioning of the Kubernetes cluster)
+- Draw.io (for creating the diagram)
