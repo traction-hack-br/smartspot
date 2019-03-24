@@ -2,7 +2,7 @@
 
 ## Traction Guest Challenge - Smart Spot
 
-### DevOps Pipeline - By Antonio Matos
+### DevOps Pipeline (conceptual, not implemented) - By Antonio Matos
 
 Tools envolved:
 
