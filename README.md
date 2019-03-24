@@ -5,7 +5,7 @@
 ### Traction Hack BR Team
 Antonio Matos - DevOps  
 Natasha dos Reis - QA  
-Luiz de Pauls - Ruby Backend Developer  
+Luiz de Paula - Ruby Backend Developer  
 
 ### Idea
 Since we couldn't find details on how the Traction Guest Parking Lot module works, we put together a very simple checkin/checkout flow.  
