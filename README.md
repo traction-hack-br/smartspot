@@ -15,7 +15,7 @@ The idea is, after the checkin process in the parking lot entrance, the guest re
 When the guest checks out, another SMS is sent, thanking for the visit, and providing a link to a parking lot map, with the spot highlited. That way, guest can easily find the automobile.
 
 ### Folders
-docs: contains both flows (checkin/checkout) documented
-qa: contains the test case scenarios that should be tested
-src: contains the code (Ruby on Rails)
-devops: contains details on the DevOps process to deploy the application
+docs: contains both flows (checkin/checkout) documented  
+qa: contains the test case scenarios that should be tested  
+src: contains the code (Ruby on Rails)  
+devops: contains details on the DevOps process to deploy the application  
