@@ -7,4 +7,9 @@ Antonio Matos - DevOps
 Natasha dos Reis - QA  
 Luiz de Pauls - Ruby Backend Developer  
 
-This is the initial documentation
+### Idea
+Since we couldn't find details on how the Traction Guest Parking Lot module works, we put together a very simple checkin/checkout flow.  
+  
+The idea is, after the checkin process in the parking lot entrance, the guest receives a SMS message (or email) containing the spot number he/she is supposed to park.  
+  
+When the guest checks out, another SMS is sent, thanking for the visit, and providing a link to a parking lot map, with the spot highlited. That way, guest can easily find the automobile.
